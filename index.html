@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glaucoma Diagnosis</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<center>
+  
+    <button id="yesButton" style="display:none;" onclick="handleYes()">Yes</button>
+    <div class="canvas-container">
+        
+        <canvas id="mcanvas" width="650" height="650"></canvas>
+        <canvas id="ncanvas" width="650" height="650"></canvas>
+        
+    </div>
+
+    <div class="questionaire"></div>
+    <br>
+    <button id="doneButton"  onclick="handleDone()">Done</button>
+    
+</center>
+
+<script src="main.js"></script>
+
+</body>
+</html>
