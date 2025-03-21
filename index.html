@@ -3,32 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glaucoma Diagnosis</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>VR View with Canvases</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black; /* Set a consistent background color */
+        }
+        .canvas-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* Add some spacing between the canvases */
+        }
+        canvas {
+            display: block;
+            background-color: white; /* Set a consistent background color for the canvases */
+        }
+    </style>
 </head>
 <body>
-
-<center>
-  
-    <button id="yesButton" style="display:none;" onclick="handleYes()">Yes</button>
     <div class="canvas-container">
-        
-        <canvas id="mcanvas" width="400" height="400"></canvas>
-        <canvas id="ncanvas" width="400" height="400"></canvas>
-        
+        <canvas id="mcanvas" width="600" height="300"></canvas>
+        <canvas id="ncanvas" width="600" height="300"></canvas>
     </div>
 
-    <div class="questionaire"></div>
-    <button id="doneButton"  onclick="handleDone()">Done</button>
-    
-</center>
+    <script>
+        // Get the canvases
+        const canvas = document.getElementById("mcanvas");
+        const ctx = canvas.getContext("2d");
 
-<script src="main.js"></script>
+        const canvas1 = document.getElementById("ncanvas");
+        const ctx1 = canvas1.getContext("2d");
 
+        // Load background images
+        const backgroundImage = new Image();
+        backgroundImage.src = "Screenshot 2025-03-18 141507.png";
+
+        const backgroundImage1 = new Image();
+        backgroundImage1.src = "Screenshot 2025-03-18 141507.png";
+
+        // Draw images on the canvases when loaded
+        backgroundImage.onload = function () {
+            ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+        };
+
+        backgroundImage1.onload = function () {
+            ctx1.drawImage(backgroundImage1, 0, 0, canvas1.width, canvas1.height);
+        };
+    </script>
 </body>
 </html>
