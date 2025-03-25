@@ -1,61 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VR View with Canvases</title>
+    <title>VR</title>
     <style>
-        body {
-            margin: 0;
-            overflow: hidden;
+        #nCanvas, #mCanvas {
+            border-color: black;
+            border-width: 4px;
+            border-style: solid;
+        }
+        center {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: black; /* Set a consistent background color */
-        }
-        .canvas-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            gap: 10px; /* Add some spacing between the canvases */
-        }
-        canvas {
-            display: block;
-            background-color: white; /* Set a consistent background color for the canvases */
+            gap: 40px; 
         }
     </style>
 </head>
-<body>
-    <div class="canvas-container">
-        <canvas id="mcanvas" width="600" height="300"></canvas>
-        <canvas id="ncanvas" width="600" height="300"></canvas>
-    </div>
-
+<body style="background-color:black;">
+    <br><br><br><br><br>
+    <center>
+        <canvas id="nCanvas" width="350" height="400"></canvas>
+        <canvas id="oCanvas" width="200" height="400"></canvas>
+        <canvas id="mCanvas" width="350" height="400"></canvas>
+    </center>
     <script>
-        // Get the canvases
-        const canvas = document.getElementById("mcanvas");
+        
+        function setCanvasBackground(canvasId, imageSrc) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext("2d");
+            const image = new Image();
+            image.src = imageSrc;
+
+            image.onload = () => {
+                
+                ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+            };
+        }
+
+      
+        setCanvasBackground("nCanvas", "Screenshot 2025-03-19 212214.png");
+        setCanvasBackground("mCanvas", "Screenshot 2025-03-19 212224.png");
+
+       
+        const canvas = document.getElementById("oCanvas");
         const ctx = canvas.getContext("2d");
 
-        const canvas1 = document.getElementById("ncanvas");
-        const ctx1 = canvas1.getContext("2d");
+        ctx.fillStyle = "red";
+        ctx.strokeStyle = "red";
 
-        // Load background images
-        const backgroundImage = new Image();
-        backgroundImage.src = "Screenshot 2025-03-18 141507.png";
+ 
+        ctx.beginPath();
+        ctx.arc(50, 200, 20, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
 
-        const backgroundImage1 = new Image();
-        backgroundImage1.src = "Screenshot 2025-03-18 141507.png";
-
-        // Draw images on the canvases when loaded
-        backgroundImage.onload = function () {
-            ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-        };
-
-        backgroundImage1.onload = function () {
-            ctx1.drawImage(backgroundImage1, 0, 0, canvas1.width, canvas1.height);
-        };
+        ctx.beginPath();
+        ctx.arc(150, 200, 20, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
     </script>
 </body>
 </html>
